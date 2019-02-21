@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import connect from '../../utils/connect';
 class Home extends Component {
   render() {
     return (
@@ -10,4 +10,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default connect()(Home);

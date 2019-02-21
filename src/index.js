@@ -20,7 +20,8 @@ let render = () => {
     )
 }
 
-if(module.hot) {
+//开启模块热替换（HMR）
+if(module.hot) {  
     module.hot.accept('./routes/index', () => {
         setImmediate(() => {
             ReactDOM.unmountComponentAtNode(MOUNT_NODE);   //销毁 MOUNT_NODE 容器内部节点

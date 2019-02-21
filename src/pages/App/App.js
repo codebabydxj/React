@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink as Link } from 'react-router-dom';
+import connect from '../../utils/connect';
 import Storage from '../../utils/storage';
 import './App.scss';
 
@@ -38,4 +39,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);
