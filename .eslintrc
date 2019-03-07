@@ -33,10 +33,6 @@
         "no-console": 0,
         "no-mixed-spaces-and-tabs": 0,
         "no-cond-assign": 0,
-        "setImmediate": "none",
-        "react/jsx-filename-extension": [1, {
-            "extensions": [".js", ".jsx"]
-        }],
-        "react/prop-types": [2, { "ignore": ["children"] }]
+        "seImmediate": "none"
     }
 }

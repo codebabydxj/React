@@ -6,6 +6,14 @@
     "transform-object-rest-spread",
     "transform-object-assign",
     "react-hot-loader/babel",
-    "syntax-dynamic-import"
+    "syntax-dynamic-import",
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "es",
+        "style": true
+      }
+    ]
   ]
 }

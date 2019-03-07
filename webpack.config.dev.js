@@ -118,19 +118,20 @@ module.exports = {
                 {
                     loader: 'css-loader',
                     options: {
-                        sourceMap: true
+                        sourceMap: true,
                     }
                 },
                 {
                     loader: 'postcss-loader',
                     options: {
-                        sourceMap: true
+                        sourceMap: true,
                     }
                 },
                 {
                     loader: 'less-loader',
                     options: {
-                        sourceMap: true
+                        sourceMap: true,
+                        javascriptEnabled: true
                     }
                 }
             ]
