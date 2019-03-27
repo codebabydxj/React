@@ -1,8 +1,9 @@
 require("babel-polyfill");
 const webpack = require('webpack');
 const path = require('path');
+//将 html 打包到 dist 下可以产生自动引入生产的js
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-//css分离,（webpack4.0以上版本要安装beta版）
+//抽离css样式,防止将样式打包在js中引起页面样式加载错乱的现象,（webpack4.0以上版本要安装beta版）
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var ip = {
@@ -13,7 +14,7 @@ var ip = {
 module.exports = {
   //模式说明(development:开发模式  production：生产)
   mode: 'development', 
-  // 控制是否生成，以及如何生成 source map
+  //为了更容易地追踪错误和警告，js 提供了source map功能(之一)，将编译后的代码映射回原始源代码js中，而非打包后的js文件中
   devtool: 'source-map',
   //入口文件的配置项
   entry: {
@@ -54,6 +55,8 @@ module.exports = {
         use: {
           loader: "babel-loader",
         },
+        //include 表示哪些目录中的 .js 文件需要进行 babel-loader
+        //exclude 表示哪些目录中的 .js 文件不要进行 babel-loader
         exclude: /node_modules/
       },
       {
