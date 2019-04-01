@@ -12,9 +12,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const pkg = require('./package.json');
 
-var ip = {
+let ip = {
   //这里的IP和端口，是你本机的ip或者是你devServer配置的IP和端口。
-  goldPath: 'http://localhost:9001/'
+  proPath: 'http://localhost:9001/'
 }
 
 module.exports = {
@@ -31,7 +31,7 @@ module.exports = {
   //出口文件的配置项
   output: {
     path: path.join(__dirname, '/dist'),
-    publicPath: ip.goldPath,
+    publicPath: ip.proPath,
     filename: "js/[name].min.[chunkhash:8].js"
   },
   //后缀自动补全

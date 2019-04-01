@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 //抽离css样式,防止将样式打包在js中引起页面样式加载错乱的现象,（webpack4.0以上版本要安装beta版）
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var ip = {
+let ip = {
   //这里的IP和端口，是你本机的ip或者是你devServer配置的IP和端口。
   betaPath: 'http://localhost:9001/'
 }
@@ -35,11 +35,13 @@ module.exports = {
     extensions: ['.js', '.jsx', '.scss', '.less', '.css'],
   },
   //配置webpack开发服务功能
-  devServer: {  
+  devServer: {
     //设置基本目录结构
     contentBase: path.join(__dirname, '/dist'),
     //一切服务都启用gzip 压缩
     compress: true,
+    //阻止所有这些消息显示
+    clientLogLevel: 'none',
     // 为了手机可以访问
     disableHostCheck: true,
     //服务器的IP地址，可以使用IP也可以使用localhost

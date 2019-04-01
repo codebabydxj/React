@@ -29,7 +29,8 @@ export function setBody(url, method, body = null, options = {}) {
       headers: {
         'Accept': 'application/json',      //http请求报头
         "Content-Type": "application/json" //http实体报头
-      }
+      },
+      timeout: 10000
     }); 
     return _options;
 }
