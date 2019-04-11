@@ -1,0 +1,25 @@
+.logo {
+    height: 64px;
+    position: relative;
+    line-height: 64px;
+    padding-left: 30px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    background: #002140;
+    overflow: hidden;
+
+    h3 {
+        color: #1890ff;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 18px;
+        margin: 0 0 0 12px;
+        font-family: 'Myriad Pro', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        font-weight: 600;
+    }
+
+    .home_icon {
+        font-size: 20px;
+        vertical-align: middle;
+    }
+}

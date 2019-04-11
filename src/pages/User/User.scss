@@ -1,0 +1,23 @@
+.user_box {
+    float: left;
+    .ant-menu-horizontal {
+        height: 100%;
+        line-height: 63px;
+    }
+    .ant-menu-horizontal > .ant-menu-submenu-selected {
+        border-bottom: 2px solid transparent;
+    }
+    .ant-menu-horizontal > .ant-menu-submenu-selected {
+        color: rgba(0, 0, 0, 0.65);
+    }
+    .ant-menu-horizontal > .ant-menu-submenu:hover {
+        border-bottom: 2px solid #1890ff;
+    }
+    .user_name {
+        margin-left: 10px;
+    } 
+    .anticon-user {
+        margin-right: 0;
+        font-size: 24px; 
+    }
+}

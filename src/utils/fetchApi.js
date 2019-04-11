@@ -85,7 +85,7 @@ async function fetchJSONAPI(
     options = {}
 ){
     const apiToken = "A2007A57DDB3EBD0AB45B2EF75DB7449E837FD20B734E837371C76197F3057AC"; 
-    // const apiToken = store.getState().user.apiKey; //用户登录成功后台返回Token,保存在redux中
+    // const apiToken = store.getState().user.apiKey || ''; //用户登录成功后台返回Token,保存在redux中
     console.log('apiToken:',apiToken);
     const AuthenticationHeader = {
         headers: { "X-Authentication-Token": apiToken }

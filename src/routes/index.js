@@ -3,6 +3,7 @@ import { Router as BrowserRouter, Router as HashRouter, Switch, Route, Redirect 
 import createBrowserHistory from 'history/createBrowserHistory';
 import Loadable from 'react-loadable';
 import { css } from 'glamor';
+import { Spin } from 'antd';
 
 const LOADING = css({
   width:250,height:30,
@@ -15,7 +16,7 @@ const history = createBrowserHistory();
 const MyLoadingComponent = ({ isLoading, error }) => {
     // Handle the loading state
     if (isLoading) {
-        return <div {...LOADING}>Loading...</div>;
+        return <div {...LOADING}><Spin size="large" /></div>;
     }
     // Handle the error state
     else if (error) {
@@ -41,11 +42,41 @@ const Home = Loadable({
     loading: MyLoadingComponent
 });
 
+const Message = Loadable({
+    loader: () => import('../pages/Message'),
+    loading: MyLoadingComponent
+})
+
+const Personal = Loadable({
+    loader: () => import('../pages/Personal'),
+    loading: MyLoadingComponent
+})
+
+const System = Loadable({
+    loader: () => import('../pages/System'),
+    loading: MyLoadingComponent
+})
+
 const routes = [
     {
         path: '/',
         exact: true,
         component: Home
+    },
+    {
+        path: '/message',
+        exact: false,
+        component: Message
+    },
+    {
+        path: '/personal',
+        exact: true,
+        component: Personal
+    },
+    {
+        path: '/system',
+        exact: true,
+        component: System
     }
 ];
 

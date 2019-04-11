@@ -14,14 +14,14 @@ const pkg = require('./package.json');
 
 let ip = {
   //这里的IP和端口，是你本机的ip或者是你devServer配置的IP和端口。
-  proPath: 'http://localhost:9001/'
+  proPath: 'http://www.detshirts.com/wap3/dist'
 }
 
 module.exports = {
   //模式说明(development:开发模式  production：生产)
   mode: 'production', 
   //为了更容易地追踪错误和警告，js 提供了source map功能(之一)，将编译后的代码映射回原始源代码js中，而非打包后的js文件中
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map',
   //入口文件的配置项
   entry: {
     app: path.join(__dirname, '/src/index.js'),
@@ -48,7 +48,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
             'babel-loader',
-            'eslint-loader'
+            // 'eslint-loader'
         ]
       },
       {

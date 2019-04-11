@@ -2,7 +2,7 @@ import * as LoginActions from '../../actions/login/login';
 
 const initialState = {
     isReady: false,
-    data: {}
+    userInfo: {}
 }
 
 export default (state = initialState, action) => {
@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
         case LoginActions.LOGIN_SUCCESS:
         return {
             ...state,
-            data: action.payload,
+            userInfo: action.payload,
             isReady: true
         }
 

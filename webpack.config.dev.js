@@ -15,11 +15,11 @@ module.exports = {
   //模式说明(development:开发模式  production：生产模式)
   mode: 'development', 
   //为了更容易地追踪错误和警告，js 提供了source map功能(之一)，将编译后的代码映射回原始源代码js中，而非打包后的js文件中
-  devtool: 'source-map',
+  devtool: 'cheap-module-eval-source-map',
   //入口文件的配置项
   entry: {
     // app: path.join(__dirname, '/src/index.js'),
-    main: ['babel-polyfill','react-hot-loader/patch', path.join(__dirname, '/src/index.js')],
+    main: ['babel-polyfill', path.join(__dirname, '/src/index.js')],
   },
   //出口文件的配置项
   output: {

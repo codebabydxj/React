@@ -15,7 +15,7 @@ module.exports = {
   //模式说明(development:开发模式  production：生产)
   mode: 'development', 
   //为了更容易地追踪错误和警告，js 提供了source map功能(之一)，将编译后的代码映射回原始源代码js中，而非打包后的js文件中
-  devtool: 'source-map',
+  devtool: 'cheap-module-eval-source-map',
   //入口文件的配置项
   entry: {
     main: ["babel-polyfill", path.join(__dirname, '/src/index.js')],
@@ -35,7 +35,7 @@ module.exports = {
     //本地服务器所加载的页面所在的目录
     contentBase: './dev',
     //阻止所有这些消息显示
-    clientLogLevel: 'none',
+    // clientLogLevel: 'none',
     // 为了手机可以访问
     disableHostCheck: true,
     //服务器的IP地址，可以使用IP也可以使用localhost
@@ -48,7 +48,10 @@ module.exports = {
     inline: true,
     // 为了SPA应用服务
     historyApiFallback: true,
+    //自动拉起浏览器
+    open:true
   },
+
   //模块配置（例如解读css、图片如何转换，压缩）
   module: {
     rules: [

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import connect from '../../utils/connect';
-import {Form, Icon, Input, Button, Checkbox} from 'antd';
+import {Form, Icon, Input, Button, Checkbox, message} from 'antd';
 import * as LoginActions from '../../../store/actions/login/login';
 import { FetchAPI } from '../../utils/fetchApi';
 import { loginUrl } from '../../utils/fetchUrl';
 import './Login.scss';
+import Storage from '../../utils/storage';
 
 class NormalLoginForm extends Component {
   handleSubmit = (e) => {
@@ -12,19 +13,32 @@ class NormalLoginForm extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
-        // const userInfo = {
-        //   username: values.userName,
-        //   password: values.password
-        // }
+        const userInfo = {
+          username: values.userName,
+          password: values.password,
+          apiKey: '26dbyu2bbjfknqjkb3h4b3jhrbdjwb3jhe2bfew23eb43'
+        }
         // FetchAPI.getAPI(`${loginUrl}`,userInfo)
         // .then(res => {
         //   console.log(res)
+        //   if(res.status == 200) {
+        //     let storage = new Storage();
+        //     storage.removeSessionStorage('userInfo');
+        //     storage.setSessionStorage('userInfo', res.data);
+        //     message.success('登录成功', 1, () => {
+        //       this.props.history.push('/')
+        //     })
+        //   }else {
+        //     message.error(res.msg)
+        //   }
         // })
         // .catch(err => {
         //   console.log(err)
         // })
-        let data= {User:'yogi', Pass: '123456', ApiToken: '1t263rhfienfgjnrug82u84y489012u3ry873h'}
-        this.props.dispatch(LoginActions.login(data))
+        let storage = new Storage();
+        storage.removeSessionStorage('userInfo');
+        storage.setSessionStorage('userInfo', userInfo);
+        this.props.history.push('/');
       }
     });
   }

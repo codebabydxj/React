@@ -1,0 +1,46 @@
+.home_box {
+    .home_layout{
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+    .home_header {
+        background-color: #fff !important;
+        padding: 0;
+        -webkit-box-shadow: 0 1px 4px rgba(0,21,41,.08);
+        box-shadow: 0 1px 4px rgba(0,21,41,.08);
+        height: 64px;
+    }
+    .home_content {
+        margin: 24px 16px;
+        padding: 24px;
+        min-height: 280px;
+        background: #fff;
+    }
+    .home_footer {
+        text-align: center;
+    }
+    .home_trigger {
+        font-size: 18px;
+        line-height: 64px;
+        padding: 0 24px;
+        cursor: pointer;
+        transition: color .3s;
+    }
+    .home_trigger:hover {
+        color: #1890ff;
+    }
+    .home_userInfo {
+        float: right;
+        height: 100%;
+        .home_message {
+            height: 100%;
+            float: left;
+            margin-right: 1.2rem;
+            .home_info {
+                display: inline-block; 
+                line-height: 58px;
+                margin-top: 6px;
+            }
+        }
+    } 
+}
