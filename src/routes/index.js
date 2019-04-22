@@ -79,7 +79,10 @@ const routes = [
         component: System
     }
 ];
-
+/** 
+ * BrowserRouter: 开发过程中使用它控制路由，上传至服务器需要替换，否则会出现访问资源不存在错误
+ * HashRouter: 上传至服务器使用它控制路由
+ * */ 
 let RouterCreate = process.env.NODE_ENV !== 'production' ? BrowserRouter : HashRouter;
 
 class CreateRoutes extends Component{
