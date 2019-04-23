@@ -34,10 +34,6 @@ module.exports = {
     publicPath: ip.proPath,
     filename: "js/[name].min.[chunkhash:8].js"
   },
-  //后缀自动补全
-  resolve: {
-    extensions: ['.js', '.jsx', '.scss', '.less', '.css'],
-  },
   //模块配置（例如解读css、图片如何转换，压缩）
   module: {
     rules: [
@@ -118,6 +114,10 @@ module.exports = {
         })
       }
     ]
+  },
+  //后缀自动补全
+  resolve: {
+    extensions: ['.js', '.jsx', '.scss', '.less', '.css'],
   },
   //插件，用于生产模版和各项功能
   plugins: [

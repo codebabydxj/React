@@ -25,7 +25,7 @@ if(module.hot) {
     module.hot.accept('./routes/index', () => {
         setImmediate(() => {
             ReactDOM.unmountComponentAtNode(MOUNT_NODE);   //销毁 MOUNT_NODE 容器内部节点
-            render();
+            render();  //替换上新的组件
         })
     })
 }

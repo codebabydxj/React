@@ -15,7 +15,6 @@
         "process": true,
         "__dirname": true
     },
-    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
@@ -27,6 +26,7 @@
     "plugins": [
         "react"
     ],
+    "parser": "babel-eslint",
     "rules": {
         "indent": 0,
         "linebreak-style": 0,

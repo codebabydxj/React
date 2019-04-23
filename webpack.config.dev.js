@@ -30,33 +30,6 @@ module.exports = {
     filename: "js/[name].min.js",
     chunkFilename: 'js/[name].min.js'
   },
-  //后缀自动补全
-  resolve: {
-    extensions: ['.js', '.jsx', '.scss', '.less', '.css'],
-  },
-  //配置webpack开发服务功能
-  devServer: {
-    //设置基本目录结构
-    contentBase: path.join(__dirname, '/dist'),
-    //一切服务都启用gzip 压缩
-    compress: true,
-    //阻止所有这些消息显示
-    clientLogLevel: 'none',
-    // 为了手机可以访问
-    disableHostCheck: true,
-    //服务器的IP地址，可以使用IP也可以使用localhost
-    host: 'localhost',
-    //配置服务端口号
-    port: 9001,
-    // 模块热替换功能(使用热加载插件 HotModuleReplacementPlugin)
-    hot: true,
-    //实时刷新
-    inline: true,
-    // 为了SPA应用服务
-    historyApiFallback: true,
-    //设置自动拉起浏览器
-    // open: true,
-  },
   //模块配置（例如解读css、图片如何转换，压缩）
   module: {
     rules: [
@@ -142,6 +115,10 @@ module.exports = {
       }
     ]
   },
+  //后缀自动补全
+  resolve: {
+    extensions: ['.js', '.jsx', '.scss', '.less', '.css'],
+  },
   //插件，用于生产模版和各项功能
   plugins: [
     // html 模板插件
@@ -164,5 +141,28 @@ module.exports = {
      new webpack.HotModuleReplacementPlugin(),
      //显示出被替换模块的名称
      new webpack.NamedModulesPlugin()
-  ]
+  ],
+  //配置webpack开发服务功能
+  devServer: {
+    //设置基本目录结构
+    contentBase: path.join(__dirname, '/dist'),
+    //一切服务都启用gzip 压缩
+    compress: true,
+    //阻止所有这些消息显示
+    clientLogLevel: 'none',
+    // 为了手机可以访问
+    disableHostCheck: true,
+    //服务器的IP地址，可以使用IP也可以使用localhost
+    host: 'localhost',
+    //配置服务端口号
+    port: 9001,
+    // 模块热替换功能(使用热加载插件 HotModuleReplacementPlugin)
+    hot: true,
+    //实时刷新
+    inline: true,
+    // 为了SPA应用服务
+    historyApiFallback: true,
+    //设置自动拉起浏览器
+    // open: true,
+  },
 }
