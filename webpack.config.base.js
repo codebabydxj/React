@@ -55,10 +55,13 @@ module.exports = {
         test: /\.(htm|html)$/,  //html中img路径正确使用
         use: ['html-withimg-loader']
       },
+      //css loader
       {
-        test: /\.(css|scss)$/,
+        test: /\.css$/,
+        //指需要什么样的loader去编译文件,这里由于源文件是.css所以选择css-loader
         use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
+            fallback: 'style-loader',   //编译后用什么loader来提取css文件
+            //用来覆盖项目路径,生成该css文件的文件路径
             use: [
                 {
                     loader: 'css-loader',
@@ -71,16 +74,11 @@ module.exports = {
                     options: {
                         sourceMap: true
                     }
-                },
-                {
-                    loader: 'sass-loader',
-                    options: {
-                        sourceMap: true
-                    }
                 }
             ]
         })
       },
+      //less loader
       {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
@@ -89,6 +87,7 @@ module.exports = {
                 {
                     loader: 'css-loader',
                     options: {
+                        importLoaders: 1, //0 => no loaders (default); 1 => postcss-loader; 2 => postcss-loader, less-loader
                         sourceMap: true
                     }
                 },
@@ -99,13 +98,41 @@ module.exports = {
                     }
                 },
                 {
-                    loader: 'less-loader',
+                    loader: 'less-loader', 
                     options: {
                         sourceMap: true,
                         javascriptEnabled: true
                     }
                 }
             ]
+        })
+      },
+      //sass loader
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+                {
+                  loader: 'css-loader',
+                  options: { 
+                      importLoaders: 1, //0 => no loaders (default); 1 => postcss-loader; 2 => postcss-loader, sass-loader
+                      sourceMap: true
+                  } 
+                },
+                {
+                  loader: 'postcss-loader',
+                  options: {
+                      sourceMap: true
+                  }
+                },
+                {
+                  loader: 'sass-loader',
+                  options: {
+                      sourceMap: true
+                  }
+                }
+            ],
         })
       }
     ]
@@ -134,6 +161,14 @@ module.exports = {
   ],
   //配置webpack开发服务功能
   devServer: {
+    proxy: {
+      // 凡是 `/api` 开头的 http 请求，都会被代理到 localhost:7777 上，由 koa 提供 mock 数据。
+      // koa 代码在 ./mock 目录中，启动命令为 npm run mock
+      '/api': {
+          target: 'http://localhost:3000',
+          secure: false
+      }
+    },
     //服务器的IP地址，可以使用IP也可以使用localhost
     host: 'localhost',
     //配置服务端口号

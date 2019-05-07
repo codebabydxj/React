@@ -132,8 +132,8 @@ module.exports = {
       //是要打包的html模板路径和文件名称  
       template: path.resolve(__dirname, "src/index.html"),
       minify: {
-        removeComments: true,
-        collapseWhitespace: false
+        removeComments: true,  // 删除注释
+        collapseWhitespace: false  // 删除空格
       }
     }),
     // 对css文件进行分离

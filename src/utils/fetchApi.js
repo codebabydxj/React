@@ -48,7 +48,7 @@ async function fetchJSON(url, method = "GET", body = null, options = {}) {
   
     const res = await axios(requestBody)
       .then(response => { 
-        console.log('res:', response);
+        // console.log('res:', response);
         let dataIsArray  = (response.data instanceof Array);
         result.status = response.status;
         // result.page = { 

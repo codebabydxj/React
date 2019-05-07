@@ -26,8 +26,9 @@ module.exports = {
     path: path.join(__dirname, '/dist'),
     //publicPath 主要作用就是处理静态文件路径的
     publicPath: ip.betaPath,
-    //这里[name] 是说明入口进去是什么名字，打包出来也是什么名字
+    //这里[name] 是说明入口进去是什么名字，打包出来也是什么名字。(对应于entry里面生成出来的文件名)
     filename: "js/[name].min.js",
+    // chunkFilename用来打包require.ensure方法中引入的模块,如果该方法中没有引入任何模块则不会生成任何chunk块文件
     chunkFilename: 'js/[name].min.js'
   },
   //模块配置（例如解读css、图片如何转换，压缩）
@@ -60,10 +61,11 @@ module.exports = {
         use: ['html-withimg-loader']
       },
       {
-        test: /\.(css|scss)$/,
+        test: /\.css$/,
         //指需要什么样的loader去编译文件,这里由于源文件是.css所以选择css-loader
         use: ExtractTextPlugin.extract({
             fallback: 'style-loader', //编译后用什么loader来提取css文件
+            //用来覆盖项目路径,生成该css文件的文件路径
             use: [
                 {
                     loader: 'css-loader',
@@ -73,12 +75,6 @@ module.exports = {
                 },
                 {
                     loader: 'postcss-loader',
-                    options: {
-                        sourceMap: true
-                    }
-                },
-                {
-                    loader: 'sass-loader',
                     options: {
                         sourceMap: true
                     }
@@ -94,6 +90,7 @@ module.exports = {
                 {
                     loader: 'css-loader',
                     options: {
+                        importLoaders: 1,
                         sourceMap: true,
                     }
                 },
@@ -112,6 +109,33 @@ module.exports = {
                 }
             ]
         })
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+              {
+                loader: 'css-loader',
+                options: { 
+                    importLoaders: 1,
+                    sourceMap: true
+                } 
+              },
+              {
+                loader: 'postcss-loader',
+                options: {
+                    sourceMap: true
+                }
+              },
+              {
+                loader: 'sass-loader',
+                options: {
+                    sourceMap: true
+                }
+              }
+          ],
+        })
       }
     ]
   },
@@ -124,7 +148,7 @@ module.exports = {
     // html 模板插件
     new HtmlWebpackPlugin({
         minify: {
-            removeComments: true,
+            removeComments: true, // 删除注释
             removeAttributeQuotes: true,   //removeAttributeQuotes移除属性的引号
             collapseWhitespace: true,
             hash: true,  //为了开发中js有缓存效果，所以加了hash,这样可以有效避免缓存js
@@ -144,6 +168,14 @@ module.exports = {
   ],
   //配置webpack开发服务功能
   devServer: {
+    proxy: {
+      // 凡是 `/api` 开头的 http 请求，都会被代理到 localhost:7777 上，由 koa 提供 mock 数据。
+      // koa 代码在 ./mock 目录中，启动命令为 npm run mock
+      '/api': {
+          target: 'http://localhost:3000',
+          secure: false
+      }
+    },
     //设置基本目录结构
     contentBase: path.join(__dirname, '/dist'),
     //一切服务都启用gzip 压缩
