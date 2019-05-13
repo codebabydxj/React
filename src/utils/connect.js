@@ -1,3 +1,4 @@
+/**connect的作用其实就是将组件和models结合在一起。将models中的state绑定到组件的props中。并提供一些额外的功能，比如dispatch */
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { withRouter } from "react-router-dom";
