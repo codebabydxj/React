@@ -42,7 +42,7 @@ async function fetchJSON(url, method = "GET", body = null, options = {}) {
       statusText: "",
       status: 0,
       data: [], 
-      message: [] //for other msg type
+      message: []
     };
    
   
