@@ -4,14 +4,14 @@
     position: absolute;
     left: 0; top: 0; right: 0; bottom: 0; 
     margin: auto;
-    transform: translate(10,10)
-}
-.normal-login .login-form {
-    width: 100%;
-}
-.normal-login .login-form-forgot {
-    float: right;
-}
-.normal-login .login-form-button {
-    width: 100%;
+    transform: translate(10,10);
+    & .login-form {
+        width: 100%;
+    }
+    & .login-form-forgot {
+        float: right;
+    }
+    & .login-form-button {
+        width: 100%;
+    }
 }
